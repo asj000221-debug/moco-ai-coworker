@@ -91,49 +91,11 @@ Opus 3-티어를 갈아 끼워 비용·속도·정확도를 동시에 잡는다.
 
 ## Agentic Runtime Model
 
-MOCO의 심장은 **메시지 한 건이 처리되는 일생**이다.
+메시지 한 건이 수신되어 라우팅·오케스트레이션을 거쳐 응답·저장까지 처리되는 전체 경로.
 
-```mermaid
-flowchart TB
-    IN(["💬 Slack 메시지"]):::io
-
-    subgraph INGEST["① 수신 — 낭비 없는 진입"]
-        direction TB
-        DB["디바운싱<br/>DM 0.5s · 채널 1.5s · 파일 5s"]:::step
-        LANE["Session Lane 큐<br/>대화당 단일 워커 · 순서 보장 + 대화 간 병렬"]:::step
-        DB --> LANE
-    end
-
-    ROUTE{"② 라우팅 결정<br/>봇 호출? · 인가? · 복잡?"}:::gate
-
-    SIMPLE["Simple Chat · Haiku<br/>즉답"]:::light
-    PRO["Proactive 제안<br/>없으면 침묵"]:::light
-
-    subgraph BRAIN["③ 오케스트레이션 — Opus"]
-        direction TB
-        ORCH["오케스트레이터<br/>Observer 하트비트 · 메모리 검색"]:::heavy
-        SUBS["7 도메인 서브에이전트<br/>research · comm · code · pm · doc · data · web"]:::heavy
-        TOOLS["MCP 도구 실행 · 219+"]:::heavy
-        ORCH -->|call_sub_agent| SUBS --> TOOLS
-    end
-
-    OUT(["✅ 응답 → Slack"]):::io
-    MEM[("④ 비동기 메모리<br/>워커 10")]:::mem
-
-    IN --> INGEST --> ROUTE
-    ROUTE -->|봇 호출 아님| PRO
-    ROUTE -->|단순| SIMPLE
-    ROUTE -->|복잡·첨부| BRAIN
-    SIMPLE -.복잡 판정.-> BRAIN
-    BRAIN --> OUT --> MEM
-
-    classDef io fill:#3B6FE0,stroke:#2a4fb0,color:#ffffff
-    classDef step fill:#eef3ff,stroke:#9db8f0,color:#1b2a52
-    classDef gate fill:#fff4d6,stroke:#e0b84c,color:#5a4200
-    classDef light fill:#eafaf0,stroke:#8fd6ac,color:#1c4d33
-    classDef heavy fill:#141a2e,stroke:#3B6FE0,color:#e6ecff
-    classDef mem fill:#f3eefe,stroke:#b79ae8,color:#3a2266
-```
+<p align="center">
+  <img src="docs/img/runtime_model.png" width="760" alt="MOCO 메시지 처리 파이프라인">
+</p>
 
 1. **수신 & 디바운싱** — 끊어 보낸 메시지를 `{채널}:{유저}` 키로 짧게 모아 하나로 병합. 같은 요청에 LLM을 여러 번 부르는 낭비 방지.
 2. **Session Lane** — 대화 단위 독립 큐 + 단일 워커. 같은 대화는 순서대로, 다른 대화는 병렬로. 고정 워커풀과 달리 락 경합이 없다. 15분 유휴 시 워커가 스스로 종료.
