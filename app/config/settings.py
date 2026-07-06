@@ -145,10 +145,11 @@ class Settings(BaseSettings):
     # MCP - ClickUp
     CLICKUP_ENABLED: bool = False
     CLICKUP_API_KEY: str = ""
-    CLICKUP_API_KEY_DOROTHY: str = ""
-    CLICKUP_API_KEY_MATT: str = ""
-    CLICKUP_API_KEY_GLORY: str = ""
-    CLICKUP_API_KEY_WIDER: str = ""
+    # 사용자별 개인 API 키 슬롯 (팀원마다 자기 ClickUp 키 사용)
+    CLICKUP_API_KEY_USER1: str = ""
+    CLICKUP_API_KEY_USER2: str = ""
+    CLICKUP_API_KEY_USER3: str = ""
+    CLICKUP_API_KEY_USER4: str = ""
 
     # CLAW OPS (AICC)
     CLAWOPS_API_KEY: str = ""

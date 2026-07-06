@@ -69,8 +69,8 @@ def _load_user_api_keys():
     if _USER_API_KEYS_LOADED:
         return
     settings = get_settings()
-    for name, attr in (("dorothy", "CLICKUP_API_KEY_DOROTHY"), ("matt", "CLICKUP_API_KEY_MATT"),
-                       ("glory", "CLICKUP_API_KEY_GLORY"), ("wider", "CLICKUP_API_KEY_WIDER")):
+    for name, attr in (("user1", "CLICKUP_API_KEY_USER1"), ("user2", "CLICKUP_API_KEY_USER2"),
+                       ("user3", "CLICKUP_API_KEY_USER3"), ("user4", "CLICKUP_API_KEY_USER4")):
         key = getattr(settings, attr, "")
         if key:
             _USER_API_KEYS[name] = key

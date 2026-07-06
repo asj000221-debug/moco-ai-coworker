@@ -192,7 +192,7 @@ moco-ai-coworker/
    │  ├─ agent_factory/ generated/     # 자동 에이전트 생성 + 격리 로더
    │  ├─ atticus/ ra_regulatory_expert/  # 도메인 전문 에이전트 (웹 챗)
    │  └─ task_executor.py workspace.py   # 병렬 실행 / 공유 메모리
-   ├─ cc_checkers/             # Proactive 체커 (outlook, atlassian, skill_sync)
+   ├─ cc_checkers/             # Proactive 체커 (ms365, atlassian, skill_sync)
    ├─ cc_tools/                # MCP 도구 구현 (slack, google, crm, phone…)
    ├─ cc_mcp/                  # 자체 MCP 서버 (JSON-RPC + OAuth 2.1)
    ├─ cc_utils/                # SDK 재시도·프롬프트·메모리 인덱스·Daemon Plane
@@ -233,6 +233,5 @@ uv run black app/                    # 포매팅
   공개본에는 Electron 앱과 빌드 산출물은 포함하지 않았다.
 - **데이터 거버넌스** — 실사용 데이터, 학습/운영 상태, 회사·고객·개인 식별 정보, 규제 문서 코퍼스, 하드코딩
   크리덴셜은 모두 제거했다. CRM 데모 시드, 전화(AICC) 시나리오 등 회사 특화 데이터는 스텁으로 대체했다.
-- **라이선스** — Apache 2.0.
 
-<sub>실무 프로젝트를 포트폴리오 열람용으로 재구성한 저장소입니다.</sub>
+<sub>실무 프로젝트를 포트폴리오 열람용으로 재구성한 저장소입니다. 코드 열람 목적이며 별도 라이선스는 부여하지 않습니다.</sub>
