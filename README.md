@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/img/banner.png" alt="MOCO — AI Coworker Platform">
+</p>
+
 # MOCO — AI Coworker Platform
 
 ![Python](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)
@@ -235,3 +239,17 @@ uv run black app/                    # 포매팅
   크리덴셜은 모두 제거했다. CRM 데모 시드, 전화(AICC) 시나리오 등 회사 특화 데이터는 스텁으로 대체했다.
 
 <sub>실무 프로젝트를 포트폴리오 열람용으로 재구성한 저장소입니다. 코드 열람 목적이며 별도 라이선스는 부여하지 않습니다.</sub>
+
+---
+
+<!-- portfolio-footer -->
+
+### 🗂️ 포트폴리오
+
+이 저장소는 포트폴리오의 일부입니다. → **[전체 프로젝트 보기](https://github.com/asj000221-debug)**
+
+- **MOCO — AI Coworker Platform** ← 현재 저장소
+- [근감소증 예측 멀티모달 ML](https://github.com/asj000221-debug/sarcopenia-multimodal-ml)
+- [DTx 인지훈련 난이도 조정 봇](https://github.com/asj000221-debug/dtx-adaptive-training-bot)
+- [한국어 난독증 읽기평가 엔진](https://github.com/asj000221-debug/korean-reading-assessment)
+- [AICC 음성 상담 서버](https://github.com/asj000221-debug/aicc-voice-agent)
