@@ -4943,7 +4943,7 @@ wheels = [
 ]
 
 [[package]]
-name = "slackbot-kim-kris"
+name = "moco-ai-coworker"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
