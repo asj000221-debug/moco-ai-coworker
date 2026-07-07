@@ -5,6 +5,7 @@ MOCO Voice Chat — ElevenLabs STT/TTS + Claude 연동
 
 import io
 import logging
+import os
 import httpx
 from pathlib import Path
 
@@ -151,7 +152,7 @@ async def process_voice(audio: UploadFile = File(...), context: str = Form("")):
 
     try:
         claude_client = anthropic.Anthropic(
-            api_key=""  # TODO: 설정으로 이동
+            api_key=os.environ.get("ANTHROPIC_API_KEY", "")
         )
         claude_resp = claude_client.messages.create(
             model="claude-sonnet-4-20250514",

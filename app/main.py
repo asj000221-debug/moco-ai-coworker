@@ -66,9 +66,9 @@ async def main():
 
         if should_open_browser:
             if settings.CHROME_ALWAYS_PROFILE_SETUP:
-                logging.info("[CHROME_SETUP] 🌐 Opening browser for profile setup (CHROME_ALWAYS_PROFILE_SETUP=True)...")
+                logging.info("[CHROME_SETUP] Opening browser for profile setup (CHROME_ALWAYS_PROFILE_SETUP=True)...")
             else:
-                logging.info("[CHROME_SETUP] 🌐 Opening browser for initial login...")
+                logging.info("[CHROME_SETUP] Opening browser for initial login...")
             logging.info(
                 "[CHROME_SETUP] Please login to any sites you need and press ENTER when done."
             )
@@ -109,9 +109,9 @@ async def main():
                     # 브라우저 닫기
                     await context.close()
 
-                logging.info("[CHROME_SETUP] ✅ Browser closed, login saved!")
+                logging.info("[CHROME_SETUP] Browser closed, login saved.")
             except Exception as e:
-                logging.error(f"[CHROME_SETUP] ❌ Failed to setup Chrome: {e}")
+                logging.error(f"[CHROME_SETUP] Failed to setup Chrome: {e}")
         else:
             logging.info("[CHROME_SETUP] Chrome profile already exists, skipping setup")
 

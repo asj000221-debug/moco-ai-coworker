@@ -4,6 +4,7 @@ Claude can manage events in Google Calendar
 """
 
 import json
+import os
 from typing import Any, Dict
 from datetime import datetime, timedelta
 import re
@@ -14,18 +15,22 @@ from googleapiclient.errors import HttpError
 from app.cc_tools.google_calendar.auth_helper import get_calendar_service
 
 
-# ============================================================================
-# 회의실 목록 (하드코딩)
-# 여기에 회의실 정보를 직접 입력하세요.
-# name: 표시용 이름, email: Google Workspace 회의실 리소스 이메일
-# ============================================================================
-ROOMS = [
-    {"name": "15F Share (6인)", "email": "c_1881iou2ktj5igj3lv8rfghean742@resource.calendar.google.com"},
-    {"name": "15F Dream (8인)", "email": "c_1881gqjvmfka2heilmqihkhf3o10m@resource.calendar.google.com"},
-    {"name": "11F Feel (6인)", "email": "c_188fajco52gjmgqnhgvq45i177ud0@resource.calendar.google.com"},
-    {"name": "11F Make (8인)", "email": "c_18839fg2onaimiujhd2m2naaer69o@resource.calendar.google.com"},
-    {"name": "11F Think (8인)", "email": "c_1888hek0bpr3iggmi0hv4bac2qddq@resource.calendar.google.com"},
-]
+# 회의실 목록: Google Workspace 회의실 리소스를 환경변수 CALENDAR_ROOMS(JSON)로 주입.
+# 예) CALENDAR_ROOMS='[{"name": "Room A (6인)", "email": "<id>@resource.calendar.google.com"}]'
+def _load_rooms():
+    raw = os.environ.get("CALENDAR_ROOMS", "").strip()
+    if raw:
+        try:
+            return json.loads(raw)
+        except (json.JSONDecodeError, TypeError):
+            pass
+    return [
+        {"name": "Room A (6인)", "email": "room-a@resource.calendar.google.com"},
+        {"name": "Room B (8인)", "email": "room-b@resource.calendar.google.com"},
+    ]
+
+
+ROOMS = _load_rooms()
 
 
 def _get_error_message(e: HttpError) -> str:

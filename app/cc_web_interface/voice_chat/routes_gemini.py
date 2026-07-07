@@ -8,6 +8,7 @@ import asyncio
 import base64
 import json
 import logging
+import os
 from pathlib import Path
 
 from fastapi import APIRouter, WebSocket, WebSocketDisconnect, Body
@@ -18,12 +19,10 @@ from app.config.settings import get_settings
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/voice-chat-gemini", tags=["Voice Chat Gemini"])
 
-# Gemini API 키 (TODO: 설정으로 이동)
-GEMINI_API_KEY = ""  # TODO: 설정으로 이동
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
 
 
 def _get_gemini_key():
-    import os
     key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY") or ""
     if not key:
         settings = get_settings()

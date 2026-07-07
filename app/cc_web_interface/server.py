@@ -5,6 +5,7 @@ MOCO Web Interface Server
 
 import logging
 import os
+import secrets
 from pathlib import Path
 
 from fastapi import FastAPI, Request
@@ -33,7 +34,7 @@ web_app = FastAPI(title="MOCO Web Interface")
 # 세션 미들웨어 추가
 web_app.add_middleware(
     SessionMiddleware,
-    secret_key="your-secret-key-change-this-in-production"  # TODO: 환경변수로 변경
+    secret_key=os.environ.get("SESSION_SECRET_KEY") or secrets.token_hex(32),
 )
 
 # 정적 파일 서빙
