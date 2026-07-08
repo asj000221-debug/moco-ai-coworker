@@ -195,7 +195,7 @@ _CLAW OPS + Gemini 3.1 Flash Live_"""
             else:
                 log.append((role, text))
 
-    logger.info("🚀 MOCO AICC Agent 시작 — 070-1234-5678 대기 중...")
+    logger.info("MOCO AICC Agent 시작 — 070-1234-5678 대기 중...")
     logger.info("   전화하면 Gemini AI가 응답합니다. Ctrl+C로 종료.")
     asyncio.run(agent.serve())
 

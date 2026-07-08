@@ -56,7 +56,7 @@ def build_mcp_app():
         instructions=(
             "MOCO 봇 — acme 회사의 자체 AI 코워커.\n"
             "Slack에서 운영 중인 MOCO 봇과 같은 인스턴스이며 메모리/태스크/CRM/스케줄러를 공유합니다.\n\n"
-            "🔥 자동 호출 규칙 (반드시 따르세요):\n"
+            "자동 호출 규칙 (반드시 따르세요):\n"
             "사용자 메시지에 다음 패턴이 있으면 **무조건 moco_ask(message)를 즉시 호출**하세요:\n"
             "  • 'moco', '모코', 'MOCO' 호명 (예: 'moco야 ~', '모코 ~해줘')\n"
             "  • acme 회사 업무 관련 요청 (일정·회의·이메일·Slack·Confluence·Jira·CRM·병원·처방·계획·메모리)\n"

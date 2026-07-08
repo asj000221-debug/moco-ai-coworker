@@ -2211,7 +2211,7 @@ MOCO는 단순 CRM이 아니라 **비즈니스 도메인 별 전문 대시보드
 
 `/activities/sfe-summary/{owner}` + `/dashboards/okr`로 데이터 fetch.
 
-#### 5.15.3 QuickInput Page (생산성 최고 페이지)
+#### 5.15.3 QuickInput Page (빠른 입력 전용 페이지)
 
 ```
 [처방] [리스팅] [연락처]   ← 모드 토글

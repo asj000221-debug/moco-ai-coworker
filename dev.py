@@ -26,7 +26,7 @@ class HotReloadHandler(FileSystemEventHandler):
                 self.process.kill()  # 5초 내 종료 안 되면 force kill
                 self.process.wait()
 
-        print("🚀 Starting server...")
+        print("Starting server...")
         self.process = subprocess.Popen(
             ["uv", "run", "python", "-m", "app.main"],
             stdout=sys.stdout,
@@ -49,7 +49,7 @@ class HotReloadHandler(FileSystemEventHandler):
 
 def main():
     """Main function to start the hot reload development server."""
-    print("🔥 Hot reload development server starting...")
+    print("Hot reload development server starting...")
     print("📁 Watching for changes in app/ directory")
     print("⏹️  Press Ctrl+C to stop")
     
