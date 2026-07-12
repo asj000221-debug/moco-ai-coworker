@@ -1,0 +1,44 @@
+MOCO — AI Coworker Platform
+===========================
+
+This work is a derivative of, and incorporates software from, KIRA-Slack,
+developed by KRAFTON, Inc. and licensed under the Apache License, Version 2.0.
+
+    Original project : KIRA (KRAFTON Intelligence Rookie Agent) — KIRA-Slack
+    Source           : https://github.com/krafton-ai/KIRA
+    Copyright 2025 KRAFTON, Inc.
+
+Components originating from KIRA-Slack (and remaining under the Apache License,
+Version 2.0) include, among others: the agent runtime harness and Slack
+integration, the session-lane message queueing, the orchestrator/operator
+agent, and the memory and proactive-suggestion subsystems, together with the
+web/desktop application scaffold.
+
+------------------------------------------------------------------------------
+NOTICE OF MODIFICATIONS (Apache License 2.0, Section 4(b))
+------------------------------------------------------------------------------
+
+This repository has been modified and substantially extended beyond the
+KIRA-Slack base. Notable additions include:
+
+  * AICC — a real-time voice/telephony assistant (streaming voice response)
+    with an asynchronous post-call pipeline (recording, transcription,
+    classification, notification).
+  * Agent Factory — template-based, human-in-the-loop-gated self-extension
+    for generating and loading new domain sub-agents at runtime.
+  * An MCP server exposing the platform as a tool endpoint, with OAuth 2.1
+    (PKCE / DCR) authentication.
+  * Sub-agent delegation (call_sub_agent) and additional domain/tool
+    integrations (e.g. CRM and other connectors).
+
+------------------------------------------------------------------------------
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this work except in compliance with the License. A copy of the License is
+provided in the LICENSE file, or you may obtain one at:
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed
+under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+CONDITIONS OF ANY KIND, either express or implied.
