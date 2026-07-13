@@ -10,9 +10,9 @@ developed by KRAFTON, Inc. and licensed under the Apache License, Version 2.0.
 
 Components originating from KIRA-Slack (and remaining under the Apache License,
 Version 2.0) include, among others: the agent runtime harness and Slack
-integration, the session-lane message queueing, the orchestrator/operator
-agent, and the memory and proactive-suggestion subsystems, together with the
-web/desktop application scaffold.
+integration, the message queueing infrastructure, the orchestrator/operator
+agent, the memory and proactive-suggestion subsystems, and the difficulty-based
+3-tier model routing, together with the web/desktop application scaffold.
 
 ------------------------------------------------------------------------------
 NOTICE OF MODIFICATIONS (Apache License 2.0, Section 4(b))
@@ -28,8 +28,18 @@ KIRA-Slack base. Notable additions include:
     for generating and loading new domain sub-agents at runtime.
   * An MCP server exposing the platform as a tool endpoint, with OAuth 2.1
     (PKCE / DCR) authentication.
-  * Sub-agent delegation (call_sub_agent) and additional domain/tool
-    integrations (e.g. CRM and other connectors).
+  * A redesigned per-session concurrency model ("Session Lane": one worker per
+    conversation session, idle self-teardown, and periodic lane cleanup),
+    replacing the fixed channel-worker pools of the base.
+  * A parallel/sequential sub-agent executor (TaskExecutor) with replanning and
+    a shared TaskWorkspace for passing intermediate results between agents.
+  * Sub-agent delegation (call_sub_agent), seven domain sub-agents, and
+    integrations for eight external services (~219 tools; e.g. CRM with ~111
+    tools, Gmail, Google Workspace, ClickUp, telephony).
+  * Web and admin dashboards (~18K LOC) for the platform and the AICC console.
+
+Approximately 38K LOC of new code was authored for this repository, in addition
+to substantial modifications to the inherited files.
 
 ------------------------------------------------------------------------------
 
